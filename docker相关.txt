@@ -1,0 +1,21 @@
+apk add docker
+
+service docker start
+
+#创建虚拟网卡
+docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.2 -o parent=eth0 LYD
+
+#编辑daemon.json文件
+vim /etc/docker/daemon.json
+#添加一下内容：
+{
+         "registry-mirrors":["https://ung2thfc.mirror.aliyuncs.com"]
+}
+
+#重启docker服务
+docker pull lyd2669/ubuntu_hive
+
+#设置静态IP
+address :192.168.100.100
+netmask:255.255.255.0
+gateway:192.168.100.2

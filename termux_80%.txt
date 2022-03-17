@@ -1,0 +1,8 @@
+until [ ! $(termux-battery-status | jq -r ".percentage") -lt 80 ]
+do	
+	a=1
+done
+termux-vibrate
+termux-vibrate
+mpv /storage/emulated/0/Download/80%.mp3
+termux-vibrate

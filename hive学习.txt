@@ -1,0 +1,45 @@
+#创建数据库
+create database 库名;
+#查看当前正在使用的数据库
+select current_database();
+#创建数据表(指令过长记得多按Tab！！！)
+create table 表名(字段名称 数据类型,字段名称 数据类型);
+#将本地的数据导入到hive中
+load data local inpath "本地文件路径" into table 表名;
+#从hdfs集群中导入数据
+load data inpath "hdfs://文件路径" into table 表名;
+#查询表中的数据
+select * from 表名;
+#查看表结构
+desc 表名;
+desc extended 表名;
+desc formatted 表名;
+desc table_name.col_name;显示表中某列的信息
+#修改数据表名
+alter table 原来的 rename to 新的;
+#添加或替换列
+alter table 表名 add 或 replace colums (col_name data_type);
+#清空表
+truncate table table_name;
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#博客文章地址：https://blog.csdn.net/xiaolang85/article/details/49303659
+#显示当前使用的数据库
+set hive.cli.print.current.db=true;
+#在命令行中显示当前数据库名
+set hive.cli.print.current.db=true; 
+#查询出来的结果显示列的名称
+set hive.cli.print.header=true;
+#启用桶表
+set hive.enforce.bucketing=true;
+#压缩hive的中间结果
+set hive.exec.compress.intermediate=true;
+#对map端输出的内容使用BZip2编码/解码器
+set mapred.map.output.compression.codec=org.apache.hadoop.io.compress.BZip2Codec;
+#压缩hive的输出
+set hive.exec.compress.output=true;
+#对hive中的MR输出内容使用BZip2编码/解码器
+set mapred.output.compression.codec=org.apache.hadoop.io.compress.BZip2Codec;
+#让hive尽量尝试local模式查询而不是mapred方式
+set hive.exec.mode.local.auto=true;
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -1,0 +1,22 @@
+Mysql8.0.28版本相关指令记录
+
+#更改mysql密码：
+alter user root@localhost identified with mysql_native_password by "root";
+
+#查看默认mysql用户
+select host,user,authentication_string from mysql.user;
+
+#创建新用户
+create user "hive" identified with mysql_native_password by "hive";
+
+#授予所有权
+grant all privileges on *.* to "hive";
+
+#查看用户权限
+show grants for "hive";
+
+#刷新数据库
+flush privileges;
+
+#查看当前使用的数据库
+select current_database();
